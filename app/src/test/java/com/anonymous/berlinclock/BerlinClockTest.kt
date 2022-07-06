@@ -41,4 +41,13 @@ class BerlinClockTest {
 
         assertThat(lampState).isEqualTo(OFF)
     }
+
+    @Test
+    fun `should return off for all lamps when minute is 0`(){
+        val topLampState = berlinClock.getLampStateForTopMinutes(0)
+        val bottomLampState = berlinClock.getLampStateForBottomMinutes(0)
+
+        assertThat(topLampState).isEqualTo(listOf(OFF,OFF,OFF,OFF,OFF,OFF,OFF,OFF,OFF,OFF,OFF))
+        assertThat(bottomLampState).isEqualTo(listOf(OFF,OFF,OFF,OFF))
+    }
 }
