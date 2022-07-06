@@ -6,6 +6,7 @@ import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
 import androidx.test.filters.LargeTest
 import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner
+import com.anonymous.berlinclock.model.BerlinClockState
 import com.anonymous.berlinclock.ui.theme.BerlinClockTheme
 import org.junit.Before
 import org.junit.Rule
@@ -23,7 +24,7 @@ class BerlinClockActivityTest {
     fun setUp() {
         composeTestRule.setContent {
             BerlinClockTheme {
-                MainView()
+                BerlinClockView(BerlinClockState.initialState())
             }
         }
     }
