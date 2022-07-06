@@ -77,4 +77,13 @@ class BerlinClockTest {
         assertThat(topLampState).isEqualTo(listOf(OFF,OFF,OFF,OFF,OFF,OFF,OFF,OFF,OFF,OFF,OFF))
         assertThat(bottomLampState).isEqualTo(listOf(YELLOW,YELLOW,YELLOW,OFF))
     }
+
+    @Test
+    fun `should return all bottom lamp as yellow and others as off when minute is 4`(){
+        val topLampState = berlinClock.getLampStateForTopMinutes(4)
+        val bottomLampState = berlinClock.getLampStateForBottomMinutes(4)
+
+        assertThat(topLampState).isEqualTo(listOf(OFF,OFF,OFF,OFF,OFF,OFF,OFF,OFF,OFF,OFF,OFF))
+        assertThat(bottomLampState).isEqualTo(listOf(YELLOW,YELLOW,YELLOW,YELLOW))
+    }
 }
