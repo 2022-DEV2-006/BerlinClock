@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.os.CountDownTimer
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.viewModels
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
@@ -26,14 +27,17 @@ import com.anonymous.berlinclock.model.BerlinClockState
 import com.anonymous.berlinclock.ui.theme.BerlinClockTheme
 import com.anonymous.berlinclock.ui.theme.redEnabled
 import com.anonymous.berlinclock.ui.theme.yellowEnabled
+import dagger.hilt.android.AndroidEntryPoint
 import java.text.SimpleDateFormat
 import java.util.*
 
 private val currentTime = mutableStateOf("00:00:00")
 
+@AndroidEntryPoint
 class BerlinClockActivity : ComponentActivity() {
 
     private lateinit var timer: CountDownTimer
+    private val viewModel: BerlinClockViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -116,7 +120,7 @@ class BerlinClockActivity : ComponentActivity() {
                             .weight(1f)
                             .height(80.dp)
                             .background(color = redEnabled, shape = RoundedCornerShape(4.dp))
-                            .testTag("topHourLamp${i+1}")
+                            .testTag("topHourLamp${i + 1}")
                     )
                 }
             }
@@ -134,7 +138,7 @@ class BerlinClockActivity : ComponentActivity() {
                             .weight(1f)
                             .height(80.dp)
                             .background(color = redEnabled, shape = RoundedCornerShape(4.dp))
-                            .testTag("bottomHourLamp${i+1}")
+                            .testTag("bottomHourLamp${i + 1}")
                     )
                 }
             }
@@ -152,7 +156,7 @@ class BerlinClockActivity : ComponentActivity() {
                             .weight(1f)
                             .height(80.dp)
                             .background(color = yellowEnabled, shape = RoundedCornerShape(4.dp))
-                            .testTag("topMinutesLamp${i+1}")
+                            .testTag("topMinutesLamp${i + 1}")
                     )
                 }
             }
@@ -170,7 +174,7 @@ class BerlinClockActivity : ComponentActivity() {
                             .weight(1f)
                             .height(80.dp)
                             .background(color = yellowEnabled, shape = RoundedCornerShape(4.dp))
-                            .testTag("bottomMinutesLamp${i+1}")
+                            .testTag("bottomMinutesLamp${i + 1}")
                     )
                 }
             }

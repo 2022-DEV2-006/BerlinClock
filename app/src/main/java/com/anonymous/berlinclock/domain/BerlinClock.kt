@@ -2,8 +2,9 @@ package com.anonymous.berlinclock.domain
 
 import com.anonymous.berlinclock.domain.LampState.*
 import com.anonymous.berlinclock.model.BerlinClockState
+import javax.inject.Inject
 
-class BerlinClock {
+class BerlinClock @Inject constructor(){
 
     fun getBerlinClockState(time: String): BerlinClockState {
         val timeSplit = time.split(":")
