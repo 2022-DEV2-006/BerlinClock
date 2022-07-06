@@ -10,7 +10,11 @@ class BerlinClock {
         val lampState = MutableList(11) { OFF }
         val topMinutes = minutes / 5
         (1..topMinutes).forEach { i ->
-            lampState[i - 1] = YELLOW
+            if (i % 3 == 0){
+                lampState[i - 1] = RED
+            } else {
+                lampState[i - 1] = YELLOW
+            }
         }
         return lampState
     }
@@ -28,5 +32,6 @@ class BerlinClock {
 
 enum class LampState {
     YELLOW,
-    OFF
+    OFF,
+    RED
 }
