@@ -1,6 +1,7 @@
 package com.anonymous.berlinclock.domain
 
 import com.anonymous.berlinclock.domain.LampState.*
+import com.anonymous.berlinclock.model.BerlinClockState
 
 class BerlinClock {
 
@@ -44,6 +45,23 @@ class BerlinClock {
             lampState[i - 1] = RED
         }
         return lampState
+    }
+
+    fun getBerlinClockState(time: String): BerlinClockState {
+        val timeSplit = time.split(":")
+        val topHoursLampState = getLampStateForTopHours(timeSplit[0].toInt())
+        val bottomHoursLampState = getLampStateForBottomHours(timeSplit[0].toInt())
+        val topMinutesLampState = getLampStateForTopMinutes(timeSplit[1].toInt())
+        val bottomMinutesLampState = getLampStateForBottomMinutes(timeSplit[1].toInt())
+        val secondsLampState = getLampStateForSeconds(timeSplit[2].toInt())
+
+        return BerlinClockState(
+            secondsLampState,
+            topMinutesLampState,
+            bottomMinutesLampState,
+            topHoursLampState,
+            bottomHoursLampState
+        )
     }
 
 }

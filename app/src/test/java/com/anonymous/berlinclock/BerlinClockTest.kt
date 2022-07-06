@@ -2,6 +2,7 @@ package com.anonymous.berlinclock
 
 import com.anonymous.berlinclock.domain.BerlinClock
 import com.anonymous.berlinclock.domain.LampState.*
+import com.anonymous.berlinclock.model.BerlinClockState
 import com.google.common.truth.Truth.assertThat
 import org.junit.Before
 import org.junit.Test
@@ -198,5 +199,26 @@ class BerlinClockTest {
 
         assertThat(topLampState).isEqualTo(listOf(RED,OFF,OFF,OFF))
         assertThat(bottomLampState).isEqualTo(listOf(RED,OFF,OFF,OFF))
+    }
+
+    @Test
+    fun `should return expected lamp state for given time`() {
+        val actualState = berlinClock.getBerlinClockState("13:31:06")
+
+        val secondsLampState = YELLOW
+        val topMinutesLampState =
+            listOf(YELLOW, YELLOW, RED, YELLOW, YELLOW, RED, OFF, OFF, OFF, OFF, OFF)
+        val bottomMinutesLampState = listOf(YELLOW, OFF, OFF, OFF)
+        val topHoursLampState = listOf(RED, RED, OFF, OFF)
+        val bottomHoursLampState = listOf(RED, RED, RED, OFF)
+        val expectedState = BerlinClockState(
+            secondsLampState,
+            topMinutesLampState,
+            bottomMinutesLampState,
+            topHoursLampState,
+            bottomHoursLampState
+        )
+
+        assertThat(actualState).isEqualTo(expectedState)
     }
 }
