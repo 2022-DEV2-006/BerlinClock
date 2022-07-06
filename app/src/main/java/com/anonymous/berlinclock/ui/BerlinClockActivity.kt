@@ -156,11 +156,17 @@ class BerlinClockActivity : ComponentActivity() {
                     horizontalArrangement = Arrangement.spacedBy(4.dp)
                 ) {
                     topMinutes.forEachIndexed { i, lamp ->
+                        val lampColor: Color
+                        if (i == 2 || i == 5 || i == 8){
+                            lampColor = if (lamp != LampState.OFF) redEnabled else redDisabled
+                        } else {
+                            lampColor = if (lamp != LampState.OFF) yellowEnabled else yellowDisabled
+                        }
                         Box(
                             modifier = Modifier
                                 .weight(1f)
                                 .height(80.dp)
-                                .background(color = yellowEnabled, shape = RoundedCornerShape(4.dp))
+                                .background(color = lampColor, shape = RoundedCornerShape(4.dp))
                                 .testTag("topMinutesLamp${i + 1}")
                         )
                     }
@@ -174,11 +180,12 @@ class BerlinClockActivity : ComponentActivity() {
                     horizontalArrangement = Arrangement.spacedBy(16.dp)
                 ) {
                     bottomMinutes.forEachIndexed { i, lamp ->
+                        val lampColor: Color = if (lamp != LampState.OFF) redEnabled else redDisabled
                         Box(
                             modifier = Modifier
                                 .weight(1f)
                                 .height(80.dp)
-                                .background(color = yellowEnabled, shape = RoundedCornerShape(4.dp))
+                                .background(color = lampColor, shape = RoundedCornerShape(4.dp))
                                 .testTag("bottomMinutesLamp${i + 1}")
                         )
                     }
