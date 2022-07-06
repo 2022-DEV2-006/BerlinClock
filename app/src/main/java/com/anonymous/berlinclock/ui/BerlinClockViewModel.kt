@@ -17,5 +17,10 @@ class BerlinClockViewModel @Inject constructor(private val berlinClock: BerlinCl
     fun initBerlinClock(){
         mBerlinClockState.postValue(BerlinClockState.initialState())
     }
+
+    fun updateTime(time: String) {
+        val result = berlinClock.getBerlinClockState(time)
+        mBerlinClockState.postValue(result)
+    }
     
 }
