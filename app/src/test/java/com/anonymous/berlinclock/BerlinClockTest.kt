@@ -113,11 +113,12 @@ class BerlinClockTest {
     }
 
     @Test
-    fun `should return first top and bottom lamp as yellow when minute is 14`(){
+    fun `should return first two top and all bottom lamp as yellow when minute is 14`(){
         val topLampState = berlinClock.getLampStateForTopMinutes(14)
         val bottomLampState = berlinClock.getLampStateForBottomMinutes(14)
 
         assertThat(topLampState).isEqualTo(listOf(YELLOW,YELLOW,OFF,OFF,OFF,OFF,OFF,OFF,OFF,OFF,OFF))
         assertThat(bottomLampState).isEqualTo(listOf(YELLOW,YELLOW,YELLOW,YELLOW))
     }
+
 }
