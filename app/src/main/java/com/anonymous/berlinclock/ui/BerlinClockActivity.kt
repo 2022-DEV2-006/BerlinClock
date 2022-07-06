@@ -15,6 +15,8 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.anonymous.berlinclock.R
+import com.anonymous.berlinclock.domain.LampState
+import com.anonymous.berlinclock.model.BerlinClockState
 import com.anonymous.berlinclock.ui.theme.BerlinClockTheme
 
 class BerlinClockActivity : ComponentActivity() {
@@ -54,7 +56,8 @@ class BerlinClockActivity : ComponentActivity() {
                 .padding(16.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            val enabled = true
+            val berlinClockState = BerlinClockState.initialState()
+            val enabled = berlinClockState.secondsLampState != LampState.OFF
             val color = if (enabled) Color(0xFFFFFF33) else Color(0xFF666633)
             Box(
                 modifier = Modifier
