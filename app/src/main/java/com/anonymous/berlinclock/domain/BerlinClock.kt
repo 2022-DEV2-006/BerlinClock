@@ -8,7 +8,13 @@ class BerlinClock {
 
     fun getLampStateForTopMinutes(minutes: Int): List<LampState> = MutableList(11){OFF}
 
-    fun getLampStateForBottomMinutes(minutes: Int): List<LampState> = MutableList(4){OFF}
+    fun getLampStateForBottomMinutes(minutes: Int): List<LampState> {
+        val lampState = MutableList(4){OFF}
+        if (minutes == 1) {
+            lampState[minutes - 1] = YELLOW
+        }
+        return lampState
+    }
 
 }
 
