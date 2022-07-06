@@ -29,7 +29,7 @@ class BerlinClock {
         return lampState
     }
 
-    fun getLampStateForTopHours(hours: Int) : List<LampState> {
+    private fun getLampStateForTopHours(hours: Int) : List<LampState> {
         val lampState =  MutableList(4) { OFF }
         val topHours = hours / 5
         (1..topHours).forEach{ i ->
@@ -38,7 +38,7 @@ class BerlinClock {
         return lampState
     }
 
-    fun getLampStateForBottomHours(hours: Int): List<LampState> {
+    private fun getLampStateForBottomHours(hours: Int): List<LampState> {
         val lampState = MutableList(4) { OFF }
         val bottomHours = hours % 5
         (1..bottomHours).forEach{ i ->

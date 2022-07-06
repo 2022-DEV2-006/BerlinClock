@@ -132,63 +132,57 @@ class BerlinClockTest {
 
     @Test
     fun `should return all lamp as off when hour is 0`(){
-        val topLampState = berlinClock.getLampStateForTopHours(0)
-        val bottomLampState = berlinClock.getLampStateForBottomHours(0)
+        val clockState = berlinClock.getBerlinClockState("00:45:03")
 
-        assertThat(topLampState).isEqualTo(listOf(OFF,OFF,OFF,OFF))
-        assertThat(bottomLampState).isEqualTo(listOf(OFF,OFF,OFF,OFF))
+        assertThat(clockState.topHoursLampState).isEqualTo(listOf(OFF,OFF,OFF,OFF))
+        assertThat(clockState.bottomHoursLampState).isEqualTo(listOf(OFF,OFF,OFF,OFF))
     }
 
     @Test
     fun `should return first bottom lamp as red and others as off when hour is 1`(){
-        val topLampState = berlinClock.getLampStateForTopHours(1)
-        val bottomLampState = berlinClock.getLampStateForBottomHours(1)
+        val clockState = berlinClock.getBerlinClockState("01:45:03")
 
-        assertThat(topLampState).isEqualTo(listOf(OFF,OFF,OFF,OFF))
-        assertThat(bottomLampState).isEqualTo(listOf(RED,OFF,OFF,OFF))
+        assertThat(clockState.topHoursLampState).isEqualTo(listOf(OFF,OFF,OFF,OFF))
+        assertThat(clockState.bottomHoursLampState).isEqualTo(listOf(RED,OFF,OFF,OFF))
     }
 
     @Test
     fun `should return first two bottom lamp as red and others as off when hour is 2`(){
-        val topLampState = berlinClock.getLampStateForTopHours(2)
-        val bottomLampState = berlinClock.getLampStateForBottomHours(2)
+        val clockState = berlinClock.getBerlinClockState("02:45:03")
 
-        assertThat(topLampState).isEqualTo(listOf(OFF,OFF,OFF,OFF))
-        assertThat(bottomLampState).isEqualTo(listOf(RED,RED,OFF,OFF))
+        assertThat(clockState.topHoursLampState).isEqualTo(listOf(OFF,OFF,OFF,OFF))
+        assertThat(clockState.bottomHoursLampState).isEqualTo(listOf(RED,RED,OFF,OFF))
     }
 
     @Test
     fun `should return all bottom lamp as red and others as off when hour is 4`(){
-        val topLampState = berlinClock.getLampStateForTopHours(4)
-        val bottomLampState = berlinClock.getLampStateForBottomHours(4)
+        val clockState = berlinClock.getBerlinClockState("04:45:03")
 
-        assertThat(topLampState).isEqualTo(listOf(OFF,OFF,OFF,OFF))
-        assertThat(bottomLampState).isEqualTo(listOf(RED,RED,RED,RED))
+        assertThat(clockState.topHoursLampState).isEqualTo(listOf(OFF,OFF,OFF,OFF))
+        assertThat(clockState.bottomHoursLampState).isEqualTo(listOf(RED,RED,RED,RED))
     }
 
     @Test
     fun `should return all bottom lamp as off when hour is 5`(){
-        val bottomLampState = berlinClock.getLampStateForBottomHours(5)
+        val clockState = berlinClock.getBerlinClockState("05:45:03")
 
-        assertThat(bottomLampState).isEqualTo(listOf(OFF,OFF,OFF,OFF))
+        assertThat(clockState.bottomHoursLampState).isEqualTo(listOf(OFF,OFF,OFF,OFF))
     }
 
     @Test
     fun `should return first top lamp as red and all bottom lamp as off when hour is 5`(){
-        val topLampState = berlinClock.getLampStateForTopHours(5)
-        val bottomLampState = berlinClock.getLampStateForBottomHours(5)
+        val clockState = berlinClock.getBerlinClockState("05:45:03")
 
-        assertThat(topLampState).isEqualTo(listOf(RED,OFF,OFF,OFF))
-        assertThat(bottomLampState).isEqualTo(listOf(OFF,OFF,OFF,OFF))
+        assertThat(clockState.topHoursLampState).isEqualTo(listOf(RED,OFF,OFF,OFF))
+        assertThat(clockState.bottomHoursLampState).isEqualTo(listOf(OFF,OFF,OFF,OFF))
     }
 
     @Test
     fun `should return first top and bottom lamp as red when hour is 6`(){
-        val topLampState = berlinClock.getLampStateForTopHours(6)
-        val bottomLampState = berlinClock.getLampStateForBottomHours(6)
+        val clockState = berlinClock.getBerlinClockState("06:45:03")
 
-        assertThat(topLampState).isEqualTo(listOf(RED,OFF,OFF,OFF))
-        assertThat(bottomLampState).isEqualTo(listOf(RED,OFF,OFF,OFF))
+        assertThat(clockState.topHoursLampState).isEqualTo(listOf(RED,OFF,OFF,OFF))
+        assertThat(clockState.bottomHoursLampState).isEqualTo(listOf(RED,OFF,OFF,OFF))
     }
 
     @Test
