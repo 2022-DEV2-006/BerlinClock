@@ -28,6 +28,10 @@ class BerlinClock {
         return lampState
     }
 
+    fun getLampStateForTopHours(hours: Int) = MutableList(4) { OFF }
+
+    fun getLampStateForBottomHours(hours: Int) = MutableList(4) { OFF }
+
 }
 
 enum class LampState {
