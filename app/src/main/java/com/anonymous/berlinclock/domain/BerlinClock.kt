@@ -1,15 +1,19 @@
 package com.anonymous.berlinclock.domain
 
-const val YELLOW = "YELLOW"
-const val OFF = "OFF"
+import com.anonymous.berlinclock.domain.LampState.*
 
 class BerlinClock {
 
-    fun getLampStateForSeconds(seconds: Int): String {
-        if (seconds == 1){
+    fun getLampStateForSeconds(seconds: Int): LampState {
+        if (seconds == 1) {
             return OFF
         }
         return YELLOW
     }
 
+}
+
+enum class LampState {
+    YELLOW,
+    OFF
 }

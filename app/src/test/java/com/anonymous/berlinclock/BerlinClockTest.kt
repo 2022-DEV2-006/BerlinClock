@@ -1,8 +1,7 @@
 package com.anonymous.berlinclock
 
 import com.anonymous.berlinclock.domain.BerlinClock
-import com.anonymous.berlinclock.domain.OFF
-import com.anonymous.berlinclock.domain.YELLOW
+import com.anonymous.berlinclock.domain.LampState.*
 import com.google.common.truth.Truth.assertThat
 import org.junit.Before
 import org.junit.Test
