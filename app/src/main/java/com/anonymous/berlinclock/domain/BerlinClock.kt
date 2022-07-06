@@ -32,8 +32,8 @@ class BerlinClock {
 
     fun getLampStateForBottomHours(hours: Int): List<LampState> {
         val lampState = MutableList(4) { OFF }
-        if (hours == 1){
-            lampState[hours - 1] = RED
+        (1..hours).forEach{ i ->
+            lampState[i - 1] = RED
         }
         return lampState
     }
