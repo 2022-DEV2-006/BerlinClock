@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -18,6 +19,7 @@ import com.anonymous.berlinclock.R
 import com.anonymous.berlinclock.domain.LampState
 import com.anonymous.berlinclock.model.BerlinClockState
 import com.anonymous.berlinclock.ui.theme.BerlinClockTheme
+import com.anonymous.berlinclock.ui.theme.redEnabled
 
 class BerlinClockActivity : ComponentActivity() {
 
@@ -59,11 +61,48 @@ class BerlinClockActivity : ComponentActivity() {
             val berlinClockState = BerlinClockState.initialState()
             val enabled = berlinClockState.secondsLampState != LampState.OFF
             val color = if (enabled) Color(0xFFFFFF33) else Color(0xFF666633)
+            //Seconds view
             Box(
                 modifier = Modifier
                     .size(100.dp)
                     .testTag("secondsLamp")
                     .background(color = color, shape = CircleShape)
             )
+            //Top Hours view
+            val topHours = berlinClockState.topHoursLampState
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(top = 16.dp),
+                horizontalArrangement = Arrangement.spacedBy(16.dp)
+            ) {
+                topHours.forEachIndexed { i, lamp ->
+                    Box(
+                        modifier = Modifier
+                            .weight(1f)
+                            .height(80.dp)
+                            .background(color = redEnabled, shape = RoundedCornerShape(4.dp))
+                            .testTag("topHourLamp${i+1}")
+                    )
+                }
+            }
+            //Bottom hours view
+            val bottomHours = berlinClockState.bottomHoursLampState
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(top = 16.dp),
+                horizontalArrangement = Arrangement.spacedBy(16.dp)
+            ) {
+                bottomHours.forEachIndexed { i, lamp ->
+                    Box(
+                        modifier = Modifier
+                            .weight(1f)
+                            .height(80.dp)
+                            .background(color = redEnabled, shape = RoundedCornerShape(4.dp))
+                            .testTag("bottomHourLamp${i+1}")
+                    )
+                }
+            }
         }
     }
