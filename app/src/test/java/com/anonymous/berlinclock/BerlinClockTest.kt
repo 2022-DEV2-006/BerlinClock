@@ -17,30 +17,30 @@ class BerlinClockTest {
 
     @Test
     fun `should return yellow state for 0 second`(){
-        val lampState = berlinClock.getLampStateForSeconds(0)
+        val clockState = berlinClock.getBerlinClockState("00:00:00")
 
-        assertThat(lampState).isEqualTo(YELLOW)
+        assertThat(clockState.secondsLampState).isEqualTo(YELLOW)
     }
 
     @Test
     fun `should return off state for 1 seconds`(){
-        val lampState = berlinClock.getLampStateForSeconds(1)
+        val clockState = berlinClock.getBerlinClockState("00:00:01")
 
-        assertThat(lampState).isEqualTo(OFF)
+        assertThat(clockState.secondsLampState).isEqualTo(OFF)
     }
 
     @Test
     fun `should return yellow state for 2 seconds`(){
-        val lampState = berlinClock.getLampStateForSeconds(2)
+        val clockState = berlinClock.getBerlinClockState("00:00:02")
 
-        assertThat(lampState).isEqualTo(YELLOW)
+        assertThat(clockState.secondsLampState).isEqualTo(YELLOW)
     }
 
     @Test
     fun `should return off state for 3 seconds`(){
-        val lampState = berlinClock.getLampStateForSeconds(3)
+        val clockState = berlinClock.getBerlinClockState("00:00:03")
 
-        assertThat(lampState).isEqualTo(OFF)
+        assertThat(clockState.secondsLampState).isEqualTo(OFF)
     }
 
     @Test

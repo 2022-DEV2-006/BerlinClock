@@ -5,7 +5,7 @@ import com.anonymous.berlinclock.model.BerlinClockState
 
 class BerlinClock {
 
-    fun getLampStateForSeconds(seconds: Int): LampState = if (seconds % 2 == 0) YELLOW else OFF
+   private fun getLampStateForSeconds(seconds: Int): LampState = if (seconds % 2 == 0) YELLOW else OFF
 
     fun getLampStateForTopMinutes(minutes: Int): List<LampState> {
         val lampState = MutableList(11) { OFF }
