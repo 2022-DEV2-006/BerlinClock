@@ -7,6 +7,7 @@ import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
 import com.anonymous.berlinclock.R
+import com.anonymous.berlinclock.ui.theme.BerlinClockTheme
 
 class BerlinClockActivity : ComponentActivity() {
 
@@ -40,14 +41,4 @@ class BerlinClockActivity : ComponentActivity() {
     @Composable
     fun BerlinClockView() {
 
-    }
-
-    @Composable
-    fun BerlinClockTheme(content: @Composable () -> Unit) {
-        MaterialTheme(
-            colors = lightColors(),
-            typography = Typography(),
-            shapes = Shapes(),
-            content = content
-        )
     }
