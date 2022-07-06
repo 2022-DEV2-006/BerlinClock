@@ -26,10 +26,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.anonymous.berlinclock.R
 import com.anonymous.berlinclock.domain.LampState
 import com.anonymous.berlinclock.model.BerlinClockState
-import com.anonymous.berlinclock.ui.theme.BerlinClockTheme
-import com.anonymous.berlinclock.ui.theme.redEnabled
-import com.anonymous.berlinclock.ui.theme.yellowDisabled
-import com.anonymous.berlinclock.ui.theme.yellowEnabled
+import com.anonymous.berlinclock.ui.theme.*
 import dagger.hilt.android.AndroidEntryPoint
 import java.text.SimpleDateFormat
 import java.util.*
@@ -119,11 +116,13 @@ class BerlinClockActivity : ComponentActivity() {
                     horizontalArrangement = Arrangement.spacedBy(16.dp)
                 ) {
                     topHours.forEachIndexed { i, lamp ->
+                        val topHoursLampOn = lamp != LampState.OFF
+                        val lampColor = if (topHoursLampOn) redEnabled else redDisabled
                         Box(
                             modifier = Modifier
                                 .weight(1f)
                                 .height(80.dp)
-                                .background(color = redEnabled, shape = RoundedCornerShape(4.dp))
+                                .background(color = lampColor, shape = RoundedCornerShape(4.dp))
                                 .testTag("topHourLamp${i + 1}")
                         )
                     }
@@ -137,11 +136,13 @@ class BerlinClockActivity : ComponentActivity() {
                     horizontalArrangement = Arrangement.spacedBy(16.dp)
                 ) {
                     bottomHours.forEachIndexed { i, lamp ->
+                        val bottomHoursLampOn = lamp != LampState.OFF
+                        val lampColor = if (bottomHoursLampOn) redEnabled else redDisabled
                         Box(
                             modifier = Modifier
                                 .weight(1f)
                                 .height(80.dp)
-                                .background(color = redEnabled, shape = RoundedCornerShape(4.dp))
+                                .background(color = lampColor, shape = RoundedCornerShape(4.dp))
                                 .testTag("bottomHourLamp${i + 1}")
                         )
                     }
