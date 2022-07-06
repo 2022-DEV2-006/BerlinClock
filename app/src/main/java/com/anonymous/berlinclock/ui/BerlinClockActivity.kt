@@ -20,6 +20,7 @@ import com.anonymous.berlinclock.domain.LampState
 import com.anonymous.berlinclock.model.BerlinClockState
 import com.anonymous.berlinclock.ui.theme.BerlinClockTheme
 import com.anonymous.berlinclock.ui.theme.redEnabled
+import com.anonymous.berlinclock.ui.theme.yellowEnabled
 
 class BerlinClockActivity : ComponentActivity() {
 
@@ -101,6 +102,42 @@ class BerlinClockActivity : ComponentActivity() {
                             .height(80.dp)
                             .background(color = redEnabled, shape = RoundedCornerShape(4.dp))
                             .testTag("bottomHourLamp${i+1}")
+                    )
+                }
+            }
+            // Top Minutes view
+            val topMinutes = berlinClockState.topMinutesLampState
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(top = 16.dp),
+                horizontalArrangement = Arrangement.spacedBy(4.dp)
+            ) {
+                topMinutes.forEachIndexed { i, lamp ->
+                    Box(
+                        modifier = Modifier
+                            .weight(1f)
+                            .height(80.dp)
+                            .background(color = yellowEnabled, shape = RoundedCornerShape(4.dp))
+                            .testTag("topMinutesLamp${i+1}")
+                    )
+                }
+            }
+            // Bottom Minutes view
+            val bottomMinutes = berlinClockState.bottomMinutesLampState
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(top = 16.dp),
+                horizontalArrangement = Arrangement.spacedBy(16.dp)
+            ) {
+                bottomMinutes.forEachIndexed { i, lamp ->
+                    Box(
+                        modifier = Modifier
+                            .weight(1f)
+                            .height(80.dp)
+                            .background(color = yellowEnabled, shape = RoundedCornerShape(4.dp))
+                            .testTag("bottomMinutesLamp${i+1}")
                     )
                 }
             }
