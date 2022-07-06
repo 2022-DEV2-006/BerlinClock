@@ -14,7 +14,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.anonymous.berlinclock.R
 import com.anonymous.berlinclock.domain.LampState
 import com.anonymous.berlinclock.model.BerlinClockState
@@ -141,5 +143,14 @@ class BerlinClockActivity : ComponentActivity() {
                     )
                 }
             }
+            //Time text
+            Spacer(modifier = Modifier.weight(1f))
+            Text(
+                modifier = Modifier.testTag("timeText"),
+                text = "11:59:59",
+                fontSize = 30.sp,
+                color = Color.Black,
+                fontWeight = FontWeight.Bold
+            )
         }
     }
